@@ -1,0 +1,3 @@
+#CommentsWrapper, #sp-appBar, [aria-label="SharePoint Site Header"], [data-automationid="SimpleFooter"],[data-automation-id="pageHeader"]{
+    display:none !important;
+}

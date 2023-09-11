@@ -11,6 +11,9 @@ import { IReadonlyTheme } from '@microsoft/sp-component-base';
 import * as strings from 'HomeWebPartStrings';
 import Home from './components/Home';
 import { IHomeProps } from './components/IHomeProps';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../Home/Main.css';
+import { getSP } from './Services/SPOps';
 
 export interface IHomeWebPartProps {
   description: string;
@@ -29,7 +32,8 @@ export default class HomeWebPart extends BaseClientSideWebPart<IHomeWebPartProps
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName: this.context.pageContext.user.displayName
+        userDisplayName: this.context.pageContext.user.displayName,
+        context: this.context
       }
     );
 
@@ -37,6 +41,7 @@ export default class HomeWebPart extends BaseClientSideWebPart<IHomeWebPartProps
   }
 
   protected onInit(): Promise<void> {
+    getSP(this.context);
     return this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
     });
