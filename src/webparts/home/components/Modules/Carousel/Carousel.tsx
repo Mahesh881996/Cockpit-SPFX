@@ -5,8 +5,9 @@ import Col from 'react-bootstrap/Col';
 import { ICarouselProps } from './ICarouselProps';
 import { getListItems } from '../../../Services/SPOps';
 import { config } from '../../../Services/Config';
+import Carousel from 'react-bootstrap/Carousel';
 
-export default class Carousel extends React.Component<ICarouselProps, any> {
+export default class CarouselModule extends React.Component<ICarouselProps, any> {
     constructor(props: ICarouselProps) {
         super(props);
         this.state = {
@@ -30,7 +31,19 @@ export default class Carousel extends React.Component<ICarouselProps, any> {
     public render(): React.ReactElement<any> {
         return (
             <Row>
-                Carousel
+                <Col md="12">
+                    <Carousel>
+                        {this.state.carouselData.map((data: any) => {
+                            return <Carousel.Item>
+                                <img className="d-block w-100" style={{height:"40vh"}} src={data.Image.Url} alt="First slide"/>
+                                <Carousel.Caption>
+                                    <h5>{data.Title}</h5>
+                                    <p>{data.Description}</p>
+                                </Carousel.Caption>
+                            </Carousel.Item>
+                        })}
+                    </Carousel>
+                </Col>
             </Row>
         )
     }

@@ -5,7 +5,7 @@ import { escape } from '@microsoft/sp-lodash-subset';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Carousel from './Modules/Carousel/Carousel';
+import CarouselModule from './Modules/Carousel/Carousel';
 
 export default class Home extends React.Component<IHomeProps, {}> {
   public render(): React.ReactElement<IHomeProps> {
@@ -20,7 +20,7 @@ export default class Home extends React.Component<IHomeProps, {}> {
     return (
       <section>
         <Container fluid>
-          <Carousel context={this.props.context}/>
+          <CarouselModule context={this.props.context}/>
         </Container>
       </section>
     );
